@@ -6,7 +6,7 @@ from fastapi import FastAPI
 
 load_dotenv()
 
-from api.routers import root
+from api.routers import root  # noqa: E402
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 

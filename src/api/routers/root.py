@@ -7,8 +7,8 @@ from api.auth import Auth
 
 router = APIRouter()
 
-AUTHORITY = os.environ.get("AUTHORITY", "http::/localhost:8089/default")
-AUDIENCE = os.environ.get("AUDIENCE", "default")
+AUTHORITY = os.environ.get("AUTHORITY")
+AUDIENCE = os.environ.get("AUDIENCE")
 
 sec = Auth(AUTHORITY, AUDIENCE)
 

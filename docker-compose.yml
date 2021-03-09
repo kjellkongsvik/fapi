@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  api:
+    build:
+      context: src
+    ports:
+      - 5000:5000
+    environment:
+      - AUDIENCE=default
+      - AUTHORITY=http://mock-oauth2-server:8080/default
+      - CLIENT_ID=id
+      - CLIENT_SECRET=secret
+

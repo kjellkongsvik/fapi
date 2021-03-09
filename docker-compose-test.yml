@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  tests:
+    build: ./tests
+    depends_on:
+      - api
+    environment:
+      - API_ADDR=http://api:5000
+      - AUDIENCE=default  
+      - AUTHORITY=http://mock-oauth2-server:8080/default
+      - CLIENT_ID=id
+      - CLIENT_SECRET=secret
+  mock-oauth2-server:
+    image: ghcr.io/kjellkongsvik/mock-oauth2-server:latest
+    environment:
+      - INTERACTIVE_LOGIN=false
+    hostname: mock-oauth2-server 
