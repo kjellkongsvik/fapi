@@ -1,17 +1,20 @@
 [project]
 name = "fapi"
-version = "5.1.6"
-description = "Add your description here"
+version = "0.1.0"
+description = ""
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "fastapi[standard]>=0.115.5",
-    "pydantic>=2.10.0",
+authors = [
+    { name = "Kjell W. Kongsvik", email = "kjell.kongsvik@gmail.com" }
 ]
-
+requires-python = ">=3.12.0"
+dependencies = [
+    "fastapi[standard]>=0.115.9",
+]
 
 [dependency-groups]
 dev = [
-    "basedpyright>=1.22.0",
-    "ruff>=0.8",
+    "basedpyright>=1.28.0",
+    "httpx>=0.28.1",
+    "pytest>=8.3.4",
+    "ruff>=0.9.8",
 ]
