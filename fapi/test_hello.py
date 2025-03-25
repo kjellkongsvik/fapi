@@ -3,4 +3,4 @@ from fapi.hello import Hello
 
 def test_hello():
     h = Hello()
-    assert h.val == 44
+    assert h.val == 45
