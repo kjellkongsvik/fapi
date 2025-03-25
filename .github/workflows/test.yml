@@ -5,14 +5,19 @@ on:
   push:
     branches:
       - main
+  merge_group:
 jobs:
   uv-example:
-    name: python
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        version: ["3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
-
+      - name: Set up Python ${{ matrix.version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.version }}
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
@@ -23,7 +28,9 @@ jobs:
         run: uv sync --dev
 
       - name: Run tests
+        if: github.event_name == 'pull_request'
         run: uv run pytest -k test_hello
 
       - name: Run e2e tests
+        if: github.event_name == 'merge_group'
         run: uv run pytest -k test_e2e
