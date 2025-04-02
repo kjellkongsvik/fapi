@@ -8,11 +8,18 @@ on:
   merge_group:
 jobs:
   uv-example:
-    name: python
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        version: ["3.12", "3.13"]
+    if: ((matrix.version == "3.12") && ${{github.event_name=='pull_request'}})
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.version }}
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
