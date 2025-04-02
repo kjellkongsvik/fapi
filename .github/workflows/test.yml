@@ -6,8 +6,9 @@ on:
     branches:
       - main
 jobs:
-  uv-example:
+  python:
     runs-on: ubuntu-latest
+    if: github.event_name != 'upull_request'
     strategy:
       matrix:
         version: ["3.12", "3.13"]
